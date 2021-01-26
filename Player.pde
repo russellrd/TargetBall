@@ -11,7 +11,7 @@ class Player {
     ellipse(playerPos.x,playerPos.y,40,40);
     textAlign(CENTER);
     textSize(20);
-    text("x: " + int(playerPos.x) + ", y: " + int(playerPos.y), playerPos.x, playerPos.y-40);
+    text("(" + int(playerPos.x) + ", " + int(playerPos.y) + ")", playerPos.x, playerPos.y-40);
     pop();
   }
   

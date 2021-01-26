@@ -8,11 +8,11 @@ public ArrayList<PVector> loadCSV() {
 }
 
 public void saveHighScores(int[] scores) {
-  saveStrings("highscores.txt", str(scores));
+  saveStrings("data/highscores.txt", str(scores));
 }
 
 public int[] loadHighScores() {
-  File f = dataFile("highscores.txt");
+  File f = new File(dataPath("highscores.txt"));
   if(f.isFile()) {
     return int(loadStrings(f));
   } else {
