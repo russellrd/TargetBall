@@ -12,5 +12,10 @@ public void saveHighScores(int[] scores) {
 }
 
 public int[] loadHighScores() {
-  return int(loadStrings("highscores.txt"));
+  File f = dataFile("highscores.txt");
+  if(f.isFile()) {
+    return int(loadStrings(f));
+  } else {
+    return new int[]{0,0,0,0,0,0,0,0,0,0};
+  }
 }

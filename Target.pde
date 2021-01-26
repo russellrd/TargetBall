@@ -1,25 +1,25 @@
 class Target {
   private PVector targetPos;
+  private int radius;
   
-  public Target(int x, int y) {
+  public Target(int x, int y, int r) {
     targetPos = new PVector(x, y);
+    radius = r;
   }
   
   public void display() {
     push();
     noStroke();
-    fill(255,0,0);
-    ellipse(targetPos.x, targetPos.y, 150, 150);
-    fill(255);
-    ellipse(targetPos.x, targetPos.y, 125, 125);
-    fill(255,0,0);
-    ellipse(targetPos.x, targetPos.y, 100, 100);
-    fill(255);
-    ellipse(targetPos.x, targetPos.y, 75, 75);
-    fill(255,0,0);
-    ellipse(targetPos.x, targetPos.y, 50, 50);
-    fill(255);
-    ellipse(targetPos.x, targetPos.y, 25, 25);
+    for(int i = radius; i > radius/6; i -= 2*radius/6) {
+      fill(255,0,0);
+      ellipse(targetPos.x, targetPos.y, i, i);
+      fill(255);
+      ellipse(targetPos.x, targetPos.y, i-(radius/6), i-(radius/6));
+    }
+    fill(0);
+    textAlign(CENTER);
+    textSize(30);
+    text("(" + int(targetPos.x) + ", " + int(targetPos.y) + ")", targetPos.x-5, targetPos.y*0.2);
     pop();
   }
   
