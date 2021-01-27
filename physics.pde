@@ -1,30 +1,44 @@
 /**
  * physics Class
  *     input:
- *      int force, int angle, mass
+ *      
  *     return:
- *       new delta position offset x,y for the ball
- *       *then you add the x,y *
+ *       
+ *       
  *
  */
 
 
+
+
 public class physics {
 
-  // the chang in position 
-  public PVector NewPosition= new PVector(0,0);
+  // PVectors 
+
+  PVector acceleration;
+  PVector dragVector;
+  PVector Fnet;
+  // Mass
+  float mass;
 
 
-  public PVector PushBall(PVector position, int mass, int angle, int force, int drag, int time) {
-   
-    // the body will always start from rest
-    int distance = (force/mass * time) / drag; 
-    
-    // now that i have the distance traveld i need to put it into the diraction of the angle
-    float rad = radians(angle);
-      NewPosition.x = position.x + (distance * cos(rad));
-      NewPosition.y = position.y + (distance * sin(rad));
-     print(NewPosition.x+ " "+ NewPosition.y);
-      return NewPosition;
+
+  /*
+  to use this method you want to call it and feed PVector velocity, PVector force, int dragCoefficient, float mass
+   the method will return acceleration and you add the it to your velocity
+   */
+  public PVector getAcceleration(PVector velocity, PVector force, int dragCoefficient, float mass) {
+    // creating the drag vector
+    dragVector = velocity.set(dragVector);
+    dragVector.normalize();
+    dragVector.mult(-1);
+    dragVector.mult(dragCoefficient);
+
+    // Fnet = sum of all Force Vectors
+    Fnet.add(force);
+    Fnet.add(dragVector);
+    // acceleration = Fnet / mass of object
+    acceleration.div(Fnet, mass);
+    return acceleration;
   }
 }
