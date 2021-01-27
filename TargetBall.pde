@@ -15,6 +15,7 @@ void setup() {
 }
 
 void draw() {
+<<<<<<< Updated upstream
   switch(screen) {
     case TITLE:
       // Change to next screen
@@ -57,4 +58,7 @@ void draw() {
       println("Error: Screen does not exist!");
   }
   
+=======
+
+>>>>>>> Stashed changes
 }
