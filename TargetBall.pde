@@ -37,12 +37,16 @@ public PVector getV(){
 
 }
 
+  PVector a1 = new PVector (200, 200);
+  PVector p1 = new PVector (200, 200);
+  PVector v1 = new PVector (200, 200);
+
 void draw(){
   
-  PVector a1 = new PVector (0,0);
-  PVector p1 = new PVector (0,0);
-  PVector v1 = new PVector (0,0);
-  
   Ball ball = new Ball(a1, p1, v1);
+  
+  p1 = ball.getP();
+  
+  ellipse(p1.x, p1.y, 50, 50);
   
 }
