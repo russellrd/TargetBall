@@ -11,7 +11,7 @@ void setup() {
   target = new Target(int(width*0.85), height/2, 400);
   PVector pos = positions.get(int(random(positions.size())));
   player = new Player(int(pos.x), int(pos.y));
-  screen = Stage.SCOREBOARD;
+  screen = Stage.GAME;
 }
 
 void draw() {
@@ -25,7 +25,7 @@ void draw() {
       target.display();
       player.display();
       // Change to next screen
-      screen = Stage.SCOREBOARD;
+      //screen = Stage.SCOREBOARD;
       break;
     case SCOREBOARD:
       push();

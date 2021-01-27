@@ -1,5 +1,7 @@
 class Player {
   private PVector playerPos;
+  private PVector playerVel;
+  private PVector playerAcc;
   
   public Player(int x, int y) {
     playerPos = new PVector(x, y);
