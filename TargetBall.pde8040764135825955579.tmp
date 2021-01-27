@@ -23,17 +23,6 @@ public void update(){
   
 }
 
-public PVector getA(){
-  return this.acceleration;
-}
-
-public PVector getP(){
-  return this.position;
-}
-
-public PVector getV(){
-  return this.velocity;
-}
 
 }
 
