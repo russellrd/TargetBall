@@ -1,15 +1,8 @@
-/**
+/*
  * physics Class
- *     input:
- *      
- *     return:
- *       
- *       
+ *     
  *
  */
-
-
-
 
 public class physics {
 
@@ -21,15 +14,14 @@ public class physics {
   // Mass
   float mass;
 
-
-
   /*
   to use this method you want to call it and feed PVector velocity, PVector force, int dragCoefficient, float mass
    the method will return acceleration and you add the it to your velocity
    */
-  public PVector getAcceleration(PVector velocity, PVector force, int dragCoefficient, float mass) {
+  public PVector getAcceleration(PVector velocity, PVector force, float dragCoefficient, float mass) {
+    try{
     // creating the drag vector
-    dragVector = velocity.set(dragVector);
+    dragVector.set(velocity);
     dragVector.normalize();
     dragVector.mult(-1);
     dragVector.mult(dragCoefficient);
@@ -39,6 +31,8 @@ public class physics {
     Fnet.add(dragVector);
     // acceleration = Fnet / mass of object
     acceleration.div(Fnet, mass);
+    }catch (NullPointerException){
+    }
     return acceleration;
   }
 }
