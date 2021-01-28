@@ -4,17 +4,19 @@
  *
  */
 
-public class physics {
+public class Physics {
 
   // PVectors
   PVector acceleration;
   PVector dragVector;
   PVector Fnet;
-    // Mass
-    float mass;
+  PVector force;
+  // Mass
+  float mass;
   // constructor 
-  public physics() {
+  public Physics(int forceX, int forceY) {
     //instantiating
+    force = new PVector (forceX, forceY);
     acceleration = new PVector (0, 0);
     dragVector = new PVector (0, 0);
     Fnet = new PVector (0, 0);
@@ -24,7 +26,7 @@ public class physics {
   to use this method you want to call it and feed PVector velocity, PVector force, int dragCoefficient, float mass
    the method will return acceleration and you add the it to your velocity
    */
-  public PVector getAcceleration(PVector velocity, PVector force, float dragCoefficient, float mass) {
+  public PVector getAcceleration(PVector velocity, float dragCoefficient, float mass) {
 
     // creating the drag vector
     dragVector.set(velocity);
