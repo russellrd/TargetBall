@@ -10,19 +10,14 @@ public class physics {
   PVector acceleration;
   PVector dragVector;
   PVector Fnet;
-  PVector velocity
     // Mass
     float mass;
-  //instantiating
-  acceleration = new PVector acceleration(0, 0);
-  dragVector = new PVector dragVector(0, 0);
-  Fnet = new PVector Fnet(0, 0);
   // constructor 
-  physics() {
+  public physics() {
     //instantiating
-    acceleration = new PVector acceleration(0, 0);
-    dragVector = new PVector dragVector(0, 0);
-    Fnet = new PVector Fnet(0, 0);
+    acceleration = new PVector (0, 0);
+    dragVector = new PVector (0, 0);
+    Fnet = new PVector (0, 0);
   }
 
   /*
