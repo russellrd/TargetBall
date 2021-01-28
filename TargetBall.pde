@@ -3,6 +3,7 @@ int[] highScores;
 Target target;
 Player player;
 Stage screen;
+Physics physics;
 
 void setup() {
   size(1600, 600);
@@ -11,7 +12,8 @@ void setup() {
   target = new Target(int(width*0.85), height/2, 400);
   PVector pos = positions.get(int(random(positions.size())));
   player = new Player(int(pos.x), int(pos.y));
-  screen = Stage.GAME;
+  physics = new Physics(0,5);
+  screen = Stage.PHYSICS;
 }
 
 void draw() {
@@ -53,6 +55,14 @@ void draw() {
     rect(width/7, height*0.15, width-(2*width/7), height*0.7);
     pop();
     break;
+    
+  case PHYSICS:
+    player.display();
+    
+    player.playerVel.set(physics.getAcceleration(player.playerVel, 0.5, 5));
+    
+    break;
+
   default:
     println("Error: Screen does not exist!");
   }
