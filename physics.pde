@@ -6,19 +6,25 @@
 
 public class physics {
 
-  // PVectors 
-
+  // PVectors
   PVector acceleration;
   PVector dragVector;
   PVector Fnet;
-  // Mass
-  float mass;
-  
+  PVector velocity
+    // Mass
+    float mass;
   //instantiating
-  acceleration = new PVector acceleration(0,0);
-  dragVector = new PVector dragVector(0,0);
-  Fnet = new PVector Fnet(0,0);
-  
+  acceleration = new PVector acceleration(0, 0);
+  dragVector = new PVector dragVector(0, 0);
+  Fnet = new PVector Fnet(0, 0);
+  // constructor 
+  physics() {
+    //instantiating
+    acceleration = new PVector acceleration(0, 0);
+    dragVector = new PVector dragVector(0, 0);
+    Fnet = new PVector Fnet(0, 0);
+  }
+
   /*
   to use this method you want to call it and feed PVector velocity, PVector force, int dragCoefficient, float mass
    the method will return acceleration and you add the it to your velocity
