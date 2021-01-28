@@ -5,6 +5,7 @@ class Player {
   
   public Player(int x, int y) {
     playerPos = new PVector(x, y);
+    playerVel = new PVector(0, 0);
   } 
   
   public void display() {
