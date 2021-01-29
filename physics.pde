@@ -26,11 +26,11 @@ public class Physics {
   
   
   /*
-    this method will set the force, by inputing a float for the amount of the forec and an int angle in degrees.
+    this method will set the force, by inputing a float for the amount of the force and an int angle in degrees.
   */
   public void setForce(float forceMagnitude, int angle) {
-    xForce = forceMagnitude * cos(angle);
-    yForce = forceMagnitude * sin(angle);
+    xForce = forceMagnitude * cos(degrees(angle));
+    yForce = forceMagnitude * sin(degrees(angle));
     force.set(xForce, yForce);
   }
   

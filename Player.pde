@@ -53,7 +53,6 @@ class Player {
   public void update() {
     if (mousePressed) {
       launched = true;
-      playerAcc = new PVector();
     }
     if(launched) {
       playerVel.add(playerAcc);

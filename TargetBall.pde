@@ -12,7 +12,7 @@ void setup() {
   target = new Target(int(width*0.85), height/2, 400);
   PVector pos = positions.get(int(random(positions.size())));
   player = new Player(int(pos.x), int(pos.y));
-  physics = new Physics(5, 0);
+  physics = new Physics();
   screen = Stage.PHYSICS;
 }
 
@@ -59,13 +59,16 @@ void draw() {
 
   case PHYSICS:
     background(170);
-    
+
+    if (player.launched) {
+      println(player.force, player.angle);
+      physics.setForce(player.force, player.angle);
+      player.playerAcc.set(physics.getAcceleration(player.playerVel, 0.5, 5));
+    }
+
     player.update();
     player.display();
-    if (mousePressed == true) {
-      player.playerVel.set(physics.getAcceleration(player.playerVel, 0.5, 5));
-    }
-    
+
     break;
 
   default:
