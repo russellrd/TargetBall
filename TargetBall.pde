@@ -22,6 +22,7 @@ void draw() {
     break;
   case GAME:
     // Game Code
+    background(170);
     target.display();
     player.display();
     // Change to next screen

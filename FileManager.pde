@@ -1,3 +1,4 @@
+// Load x and y coordinates form csv file into a pvector arraylist
 public ArrayList<PVector> loadCSV() {
   Table table = loadTable("targetballdata.csv", "header");
   ArrayList<PVector> pos = new ArrayList<PVector>();
