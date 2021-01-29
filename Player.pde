@@ -66,4 +66,12 @@ class Player {
   private float angle(PVector v1, PVector v2) {
     return atan2(v2.y, v2.x) - atan2(v1.y, v1.x);
   }
+  
+  public int getAngle() {
+    return angle;
+  }
+  
+  public int getForce() {
+    return force;
+  }
 }
