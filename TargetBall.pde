@@ -58,6 +58,8 @@ void draw() {
     break;
     
   case PHYSICS:
+    background(170);
+    
     player.display();
     
     player.playerVel.set(physics.getAcceleration(player.playerVel, 0.5, 5));
