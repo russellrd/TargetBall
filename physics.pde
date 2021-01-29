@@ -29,8 +29,9 @@ public class Physics {
     this method will set the force, by inputing a float for the amount of the force and an int angle in degrees.
   */
   public void setForce(float forceMagnitude, int angle) {
-    xForce = forceMagnitude * cos(degrees(angle));
-    yForce = forceMagnitude * sin(degrees(angle));
+    println(angle);
+    xForce = forceMagnitude * cos(angle);
+    yForce = forceMagnitude * sin(angle);
     force.set(xForce, yForce);
   }
   
@@ -51,10 +52,11 @@ public class Physics {
 
     // Fnet = sum of all Force Vectors
     Fnet.add(force);
+    
     Fnet.add(dragVector);
+    println(Fnet);
     // acceleration = Fnet / mass of object
-    acceleration.div(Fnet, mass);
-    println(dragVector);
+    acceleration.set(Fnet.x/mass,Fnet.y/mass);
 
     return acceleration;
   }

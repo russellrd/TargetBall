@@ -38,7 +38,7 @@ class Player {
       translate(playerPos.x, playerPos.y);
       angle = int(constrain(degrees(angle(new PVector(maxForce, 0), new PVector(mouseX-playerPos.x, mouseY-playerPos.y))), -90, 90));
       text(angle, 50, 50);
-      force = int(map(dist(m.x, m.y, playerPos.x, playerPos.y), 0, maxForce, 0, 10));
+      force = int(map(dist(m.x, m.y, playerPos.x, playerPos.y), 0, maxForce, 0, 2));
       text(force, m.x-playerPos.x, m.y-playerPos.y);
       noFill();
       drawArc();

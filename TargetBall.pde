@@ -61,9 +61,8 @@ void draw() {
     background(170);
 
     if (player.launched) {
-      println(player.force, player.angle);
       physics.setForce(player.force, player.angle);
-      player.playerAcc.set(physics.getAcceleration(player.playerVel, 0.5, 5));
+      player.playerAcc = physics.getAcceleration(player.playerVel, 0.5, 150);
     }
 
     player.update();
