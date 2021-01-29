@@ -30,7 +30,7 @@ public class Physics {
   */
   public void setForce(float forceMagnitude, float angle) {
     xForce = forceMagnitude * cos(angle);
-    yForce = forceMagnitude * sin(angle);
+    yForce = forceMagnitude * -sin(angle);
     force.set(xForce, yForce);
   } 
 
