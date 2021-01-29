@@ -28,15 +28,11 @@ public class Physics {
   /*
     this method will set the force, by inputing a float for the amount of the force and an int angle in degrees.
   */
-  public void setForce(float forceMagnitude, int angle) {
-    println(angle);
+  public void setForce(float forceMagnitude, float angle) {
     xForce = forceMagnitude * cos(angle);
     yForce = forceMagnitude * sin(angle);
     force.set(xForce, yForce);
-  }
-  
-  
-  
+  } 
 
   /*
   to use this method you want to call it and feed PVector velocity, PVector force, int dragCoefficient, float mass
@@ -49,9 +45,12 @@ public class Physics {
     dragVector.normalize();
     dragVector.mult(-1);
     dragVector.mult(dragCoefficient);
+    //println(dragVector);
+    //dragVector.set(new PVector(2,2));
 
     // Fnet = sum of all Force Vectors
-    Fnet.add(force);
+    Fnet.set(force);
+    
     
     Fnet.add(dragVector);
     println(Fnet);

@@ -3,7 +3,7 @@ class Player {
   private PVector playerVel;
   private PVector playerAcc;
   private int maxForce;
-  private int angle;
+  private float angle;
   private int force;
   private boolean launched;
 
@@ -36,9 +36,11 @@ class Player {
       arrow(int(playerPos.x), int(playerPos.y), int(constrain(m.x, playerPos.x, 500)), int(m.y));
       push();
       translate(playerPos.x, playerPos.y);
-      angle = int(constrain(degrees(angle(new PVector(maxForce, 0), new PVector(mouseX-playerPos.x, mouseY-playerPos.y))), -90, 90));
-      text(angle, 50, 50);
-      force = int(map(dist(m.x, m.y, playerPos.x, playerPos.y), 0, maxForce, 0, 2));
+      angle = constrain(calcAngle(new PVector(maxForce, 0), new PVector(mouseX-playerPos.x, mouseY-playerPos.y)), -PI/2, PI/2);
+      println(angle);
+      //text(int(constrain(degrees(calcAngle(new PVector(maxForce, 0), new PVector(mouseX-playerPos.x, mouseY-playerPos.y))), -90, 90)), 50, 50);
+      text(degrees(angle), 50, 50);
+      force = int(map(dist(m.x, m.y, playerPos.x, playerPos.y), 0, maxForce, 0, 50));
       text(force, m.x-playerPos.x, m.y-playerPos.y);
       noFill();
       drawArc();
@@ -71,19 +73,19 @@ class Player {
   }
 
   private void drawArc() {
-    float angleStart = angle(new PVector(1, 0), new PVector(maxForce, 0));
-    float angleEnd = angle(new PVector(1, 0), new PVector(mouseX-playerPos.x, mouseY-playerPos.y));
-    arc(0, 0, 100, 100, angleStart, constrain(angleEnd, -PI/2, PI/2));
-    if (angleEnd < angleStart) {
-      arc(0, 0, 100, 100, constrain(angleEnd, -PI/2, PI/2), angleStart);
+    float angleStart = calcAngle(new PVector(1, 0), new PVector(maxForce, 0));
+    float angleEnd = calcAngle(new PVector(1, 0), new PVector(mouseX-playerPos.x, mouseY-playerPos.y));
+    arc(0, 0, 100, 100, angleStart, -constrain(angleEnd, -PI/2, PI/2));
+    if (angleEnd > angleStart) {
+      arc(0, 0, 100, 100, -constrain(angleEnd, -PI/2, PI/2), angleStart);
     }
   }
 
-  private float angle(PVector v1, PVector v2) {
-    return atan2(v2.y, v2.x) - atan2(v1.y, v1.x);
+  private float calcAngle(PVector v1, PVector v2) {
+    return atan2(v1.y, v1.x)-atan2(v2.y, v2.x);
   }
 
-  public int getAngle() {
+  public float getAngle() {
     return angle;
   }
 

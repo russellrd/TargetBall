@@ -60,11 +60,12 @@ void draw() {
   case PHYSICS:
     background(170);
 
-    if (player.launched) {
+    if(mousePressed) {
       physics.setForce(player.force, player.angle);
-      player.playerAcc = physics.getAcceleration(player.playerVel, 0.5, 150);
+    } else {
+      physics.setForce(0, 0);
     }
-
+    player.playerAcc = physics.getAcceleration(player.playerVel, 0.9, 50);
     player.update();
     player.display();
 
