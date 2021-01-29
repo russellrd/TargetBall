@@ -11,12 +11,14 @@ public class Physics {
   PVector dragVector;
   PVector Fnet;
   PVector force;
-  // Mass
+  // numbers
   float mass;
+  float xForce;
+  float yForce;
   // constructor 
-  public Physics(int forceX, int forceY) {
+  public Physics() {
     //instantiating
-    force = new PVector (forceX, forceY);
+    force = new PVector (0, 0);
     acceleration = new PVector (0, 0);
     dragVector = new PVector (0, 0);
     Fnet = new PVector (0, 0);
@@ -26,8 +28,10 @@ public class Physics {
   /*
     this method will set the force, by inputing a float for the amount of the forec and an int angle in degrees.
   */
-  public void setForce(float dragCoefficient, float mass) {
-    
+  public void setForce(float forceMagnitude, int angle) {
+    xForce = forceMagnitude * cos(angle);
+    yForce = forceMagnitude * sin(angle);
+    force.set(xForce, yForce);
   }
   
   
