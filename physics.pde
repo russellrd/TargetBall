@@ -24,10 +24,11 @@ public class Physics {
   
   
   /*
-  
-  
+    this method will set the force, by inputing a float for the amount of the forec and an int angle in degrees.
   */
-  
+  public void setForce(float dragCoefficient, float mass) {
+    
+  }
   
   
   
