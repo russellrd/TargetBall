@@ -8,10 +8,12 @@ public ArrayList<PVector> loadCSV() {
   return pos;
 }
 
+// Save an array of scores in a text file
 public void saveHighScores(int[] scores) {
   saveStrings("data/highscores.txt", str(scores));
 }
 
+// Load an array of scores from a text file
 public int[] loadHighScores() {
   File f = new File(dataPath("highscores.txt"));
   if(f.isFile()) {
