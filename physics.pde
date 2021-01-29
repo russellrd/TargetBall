@@ -21,6 +21,17 @@ public class Physics {
     dragVector = new PVector (0, 0);
     Fnet = new PVector (0, 0);
   }
+  
+  
+  /*
+    this method will set the force, by inputing a float for the amount of the forec and an int angle in degrees.
+  */
+  public void setForce(float dragCoefficient, float mass) {
+    
+  }
+  
+  
+  
 
   /*
   to use this method you want to call it and feed PVector velocity, PVector force, int dragCoefficient, float mass
