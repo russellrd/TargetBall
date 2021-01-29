@@ -21,6 +21,16 @@ public class Physics {
     dragVector = new PVector (0, 0);
     Fnet = new PVector (0, 0);
   }
+  
+  
+  /*
+  
+  
+  */
+  
+  
+  
+  
 
   /*
   to use this method you want to call it and feed PVector velocity, PVector force, int dragCoefficient, float mass
