@@ -13,7 +13,7 @@ void setup() {
   PVector pos = positions.get(int(random(positions.size())));
   player = new Player(int(pos.x), int(pos.y));
   physics = new Physics();
-  screen = Stage.PHYSICS;
+  screen = Stage.GAME;
 }
 
 void draw() {
@@ -26,6 +26,8 @@ void draw() {
     // Game Code
     background(170);
     target.display();
+    player.playerAcc = physics.getAcceleration(player.playerVel, 0.8, 50);
+    player.update();
     player.display();
     // Change to next screen
     //screen = Stage.SCOREBOARD;
@@ -56,22 +58,12 @@ void draw() {
     rect(width/7, height*0.15, width-(2*width/7), height*0.7);
     pop();
     break;
-
-  case PHYSICS:
-    background(170);
-
-    if(mousePressed) {
-      physics.setForce(player.force, player.angle);
-    } else {
-      physics.setForce(0, 0);
-    }
-    player.playerAcc = physics.getAcceleration(player.playerVel, 0.9, 50);
-    player.update();
-    player.display();
-
-    break;
-
   default:
     println("Error: Screen does not exist!");
   }
+}
+
+void mouseReleased() {
+  player.launched = true;
+  physics.setForce(player.force, player.angle);
 }

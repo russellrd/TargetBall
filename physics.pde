@@ -53,7 +53,6 @@ public class Physics {
     
     
     Fnet.add(dragVector);
-    println(Fnet);
     // acceleration = Fnet / mass of object
     acceleration.set(Fnet.x/mass,Fnet.y/mass);
 

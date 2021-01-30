@@ -3,7 +3,7 @@ public ArrayList<PVector> loadCSV() {
   Table table = loadTable("targetballdata.csv", "header");
   ArrayList<PVector> pos = new ArrayList<PVector>();
   for(TableRow row: table.rows()) {
-    pos.add(new PVector(row.getInt("x"), row.getInt("y")));
+    pos.add(new PVector(row.getInt("x"), row.getInt("y"), row.getInt("t")));
   }
   return pos;
 }
