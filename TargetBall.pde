@@ -3,7 +3,7 @@ int[] highScores;
 Target target;
 Player player;
 Stage screen;
-Physics physics;
+Trig trig;
 int round = 1;
 
 final float r = 20;
@@ -15,7 +15,7 @@ void setup() {
   Data object = coords.get(int(random(coords.size())));
   player = new Player(object.x1, object.y1);
   target = new Target(object.x2, object.y2);
-  physics = new Physics();
+  trig = new Trig();
   screen = Stage.GAME;
 }
 
