@@ -4,15 +4,17 @@ Target target;
 Player player;
 Stage screen;
 Physics physics;
-int round = 0;
+int round = 1;
+
+final float r = 20;
 
 void setup() {
   size(1600, 600);
   coords = loadCSV();
   highScores = loadHighScores();
-  target = new Target(int(width*0.85), height/2, 400);
-  Data objects = coords.get(int(random(coords.size())));
-  player = new Player(objects.x1, objects.y1);
+  Data object = coords.get(int(random(coords.size())));
+  player = new Player(object.x1, object.y1);
+  target = new Target(object.x2, object.y2);
   physics = new Physics();
   screen = Stage.GAME;
 }
@@ -27,7 +29,6 @@ void draw() {
     // Game Code
     background(170);
     target.display();
-    player.playerAcc = physics.getAcceleration(player.playerVel, 0.8, 50);
     player.update();
     player.display();
     // Change to next screen
@@ -64,7 +65,12 @@ void draw() {
   }
 }
 
-void mouseReleased() {
-  player.launched = true;
-  physics.setForce(player.force, player.angle);
+void keyPressed() {
+  if (key == CODED) {
+    if (keyCode == UP) {
+      player.incAngle();
+    } else if (keyCode == DOWN) {
+      player.decAngle();
+    } 
+  }
 }

@@ -2,63 +2,44 @@ class Player {
   private PVector playerPos;
   private PVector playerVel;
   private PVector playerAcc;
-  private int maxForce;
   private float angle;
-  private int force;
-  private boolean launched;
-  private boolean moving;
 
   public Player(float x, float y) {
     playerPos = new PVector(x, y);
     playerVel = new PVector(0, 0);
     playerAcc = new PVector(0, 0);
-    maxForce = 200;
-    launched = false;
-    moving = false;
+    angle = 45;
   } 
 
   public void display() {
     push();
     fill(0);
-    ellipse(playerPos.x, playerPos.y, 40, 40);
+    ellipse(playerPos.x, playerPos.y, r, r);
+    noFill();
+    textAlign(CENTER);
+    textSize(40);
+    text("θ = " + angle, 100, 50);
+    textSize(20);
+    text("(" + int(playerPos.x) + ", " + int(playerPos.y) + ")", playerPos.x, playerPos.y-30);
     pop();
-    if (!launched) {
-      push();
-      fill(255);
-      strokeWeight(4);
-      PVector m = new PVector(mouseX, mouseY);
-      if (dist(m.x, m.y, playerPos.x, playerPos.y) > maxForce) {
-        m.sub(new PVector(playerPos.x, playerPos.y));
-        m.normalize();
-        m.mult(maxForce);
-        m.add(new PVector(playerPos.x, playerPos.y));
-      }
-      arrow(int(playerPos.x), int(playerPos.y), int(playerPos.x+maxForce), int(playerPos.y));
-      fill(0);
-      arrow(int(playerPos.x), int(playerPos.y), int(constrain(m.x, playerPos.x, 500)), int(m.y));
-      push();
-      translate(playerPos.x, playerPos.y);
-      angle = constrain(calcAngle(new PVector(maxForce, 0), new PVector(mouseX-playerPos.x, mouseY-playerPos.y)), -PI/2, PI/2);
-      text(int(degrees(angle)), 50, 50);
-      force = int(map(dist(m.x, m.y, playerPos.x, playerPos.y), 0, maxForce, 0, 300));
-      text(force, m.x-playerPos.x, m.y-playerPos.y);
-      noFill();
-      drawArc();
-      pop();
-      textAlign(CENTER);
-      textSize(20);
-      text("(" + int(playerPos.x) + ", " + int(playerPos.y) + ")", playerPos.x, playerPos.y-40);
-      pop();
-    }
   }
 
   public void update() {
-    playerVel.add(playerAcc);
     playerPos.add(playerVel);
-    if(launched) {
-      playerAcc.set(0,0);
-      println("hello");
-    }
+  }
+  
+  public void incAngle() {
+    if(angle < 90)
+      angle++;
+  }
+  
+  public void decAngle() {
+    if(angle > 0)
+      angle--;
+  }
+  
+  public float getAngle() {
+    return angle;
   }
 
   private void arrow(int x1, int y1, int x2, int y2) {
@@ -72,7 +53,7 @@ class Player {
   }
 
   private void drawArc() {
-    float angleStart = calcAngle(new PVector(1, 0), new PVector(maxForce, 0));
+    float angleStart = calcAngle(new PVector(1, 0), new PVector(200, 0));
     float angleEnd = calcAngle(new PVector(1, 0), new PVector(mouseX-playerPos.x, mouseY-playerPos.y));
     arc(0, 0, 100, 100, angleStart, -constrain(angleEnd, -PI/2, PI/2));
     if (angleEnd > angleStart) {
@@ -82,21 +63,5 @@ class Player {
 
   private float calcAngle(PVector v1, PVector v2) {
     return atan2(v1.y, v1.x)-atan2(v2.y, v2.x);
-  }
-
-  public float getAngle() {
-    return angle;
-  }
-
-  public int getForce() {
-    return force;
-  }
-  
-  public boolean isMoving() {
-    if(playerVel.x >= 0.01 && playerVel.y >= 0.01) {
-      return true;
-    } else {
-      return false;
-    }
   }
 }
