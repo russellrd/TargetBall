@@ -17,7 +17,7 @@ public class Trig {
     // the square points at the 90 degree point 
     int squareSize = 55;
     if (player.x<traget.x && player.y<traget.y){
-      square(player.x - squareSize, target.y, squareSize);
+      square(player.x + squareSize, target.y, squareSize);
     }
     if (player.x<traget.x && player.y>traget.y){
       square(player.x - squareSize, target.y+ squareSize, squareSize);
@@ -25,11 +25,10 @@ public class Trig {
     if (player.x>traget.x && player.y<traget.y){
       square(player.x - squareSize, target.y+ squareSize, squareSize);
     }
-    
     if (player.x>traget.x && player.y>traget.y){
-      square(player.x, target.y-squareSize, squareSize);
+      square(player.x, target.y+squareSize, squareSize);
     }
-    square(player.x, target.y, 55);
+    //square(player.x, target.y, 55);
     // line from the player to the target
     line(player.x, player.y, target.x, target.y);
     // line from the player square
