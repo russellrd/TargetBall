@@ -1,14 +1,18 @@
 class Player {
   private PVector playerPos;
+  private PVector playerAni;
   private PVector playerVel;
   private PVector playerAcc;
   private float angle;
+  private boolean running;
 
   public Player(float x, float y) {
     playerPos = new PVector(x, y);
+    playerAni = new PVector(x, y);
     playerVel = new PVector(0, 0);
     playerAcc = new PVector(0, 0);
-    angle = 45;
+    angle = 0;
+    running = false;
   } 
 
   public void display() {
@@ -17,7 +21,7 @@ class Player {
     //ellipse(playerPos.x, playerPos.y, r, r);
     imageMode(CENTER);
     playerImg.resize(int(r),int(r));
-    image(playerImg, playerPos.x, playerPos.y);
+    image(playerImg, playerAni.x, playerAni.y);
     noFill();
     textAlign(CENTER);
     textSize(40);
@@ -28,7 +32,7 @@ class Player {
   }
 
   public void update() {
-    playerPos.add(playerVel);
+    playerAni.add(playerVel);
   }
   
   public void incAngle() {
@@ -37,13 +41,17 @@ class Player {
   }
   
   public void decAngle() {
-    if(angle > 0)
+    if(angle > -90)
       angle--;
   }
   
   public float getAngle() {
     return angle;
   }
+  
+  public void setVel(float angle) {
+    player.playerVel.set(2 * cos(radians(angle)), 2 * -sin(radians(angle)));
+  } 
 
   private void arrow(int x1, int y1, int x2, int y2) {
     push();
@@ -64,7 +72,7 @@ class Player {
     }
   }
 
-  private float calcAngle(PVector v1, PVector v2) {
+  public float calcAngle(PVector v1, PVector v2) {
     return atan2(v1.y, v1.x)-atan2(v2.y, v2.x);
   }
 }

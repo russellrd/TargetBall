@@ -21,7 +21,7 @@ class Target {
     pop();
   }
   
-  public int getDist(int x, int y) {
+  public int getDist(float x, float y) {
     return int(dist(targetPos.x, targetPos.y, x, y));
   }
 }

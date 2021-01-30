@@ -16,18 +16,17 @@ public class Trig {
   public void showTrig(PVector player, PVector target) {
     // the square points at the 90 degree point 
     int squareSize = 55;
-    if (player.x<target.x && player.y<target.y){
-      square(player.x - squareSize, target.y, squareSize);
-    }
     if (player.x<target.x && player.y>target.y){
       square(player.x - squareSize, target.y+ squareSize, squareSize);
     }
     if (player.x>target.x && player.y<target.y){
       square(player.x - squareSize, target.y+ squareSize, squareSize);
     }
-    
     if (player.x>target.x && player.y>target.y){
       square(player.x, target.y-squareSize, squareSize);
+    }
+    if (player.x>target.x && player.y>target.y){
+      square(player.x, target.y+squareSize, squareSize);
     }
     //square(player.x, target.y, 55);
     // line from the player to the target
