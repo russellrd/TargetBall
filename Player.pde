@@ -8,7 +8,7 @@ class Player {
   private boolean launched;
   private boolean moving;
 
-  public Player(int x, int y) {
+  public Player(float x, float y) {
     playerPos = new PVector(x, y);
     playerVel = new PVector(0, 0);
     playerAcc = new PVector(0, 0);

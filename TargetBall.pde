@@ -1,17 +1,18 @@
-ArrayList<PVector> positions;
+ArrayList<Data> coords;
 int[] highScores;
 Target target;
 Player player;
 Stage screen;
 Physics physics;
+int round = 0;
 
 void setup() {
   size(1600, 600);
-  positions = loadCSV();
+  coords = loadCSV();
   highScores = loadHighScores();
   target = new Target(int(width*0.85), height/2, 400);
-  PVector pos = positions.get(int(random(positions.size())));
-  player = new Player(int(pos.x), int(pos.y));
+  Data objects = coords.get(int(random(coords.size())));
+  player = new Player(objects.x1, objects.y1);
   physics = new Physics();
   screen = Stage.GAME;
 }
