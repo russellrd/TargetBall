@@ -1,5 +1,6 @@
 ArrayList<Data> coords;
 int[] highScores;
+PImage playerImg;
 Target target;
 Player player;
 Stage screen;
@@ -11,6 +12,7 @@ final float r = 20;
 void setup() {
   size(1600, 600);
   coords = loadCSV();
+  playerImg = loadImage("smile.png");
   highScores = loadHighScores();
   Data object = coords.get(int(random(coords.size())));
   player = new Player(object.x1, object.y1);
@@ -28,6 +30,8 @@ void draw() {
   case GAME:
     // Game Code
     background(170);
+    trig.showTrig(player.playerPos, target.targetPos);
+    trig.showDist(true, true, true, player.playerPos, target.targetPos);
     target.display();
     player.update();
     player.display();
