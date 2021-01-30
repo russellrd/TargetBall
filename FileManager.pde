@@ -1,11 +1,11 @@
-// Load x and y coordinates form csv file into a pvector arraylist
-public ArrayList<PVector> loadCSV() {
+// Load x and y coordinates of two objects form csv file into a pvector arraylist
+public ArrayList<Data> loadCSV() {
   Table table = loadTable("targetballdata.csv", "header");
-  ArrayList<PVector> pos = new ArrayList<PVector>();
+  ArrayList<Data> d = new ArrayList<Data>();
   for(TableRow row: table.rows()) {
-    pos.add(new PVector(row.getInt("x"), row.getInt("y"), row.getInt("t")));
+    pos.add(new Data(row.getInt("x1"), row.getInt("y1"), row.getInt("x2"), row.getInt("y2")));
   }
-  return pos;
+  return d;
 }
 
 // Save an array of scores in a text file
