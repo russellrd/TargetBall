@@ -29,12 +29,15 @@ public class Trig {
       square(player.x, target.y+squareSize, squareSize);
     }
     //square(player.x, target.y, 55);
+    push();
+    strokeWeight(3);
     // line from the player to the target
     line(player.x, player.y, target.x, target.y);
     // line from the player square
-    line(player.x, player.y, player.x, target.y);
+    line(player.x, player.y, target.x, player.y);
     // line from the tragt to the square
-    line(target.x, target.y, player.x, target.y);
+    line(target.x, player.y, target.x, target.y);
+    pop();
   }
   public void showDist(boolean squareTragt, boolean squarePlayer, boolean playerTragt, PVector player, PVector target) {
     square.set(player.x, target.y);
@@ -48,7 +51,7 @@ public class Trig {
     }
     if (playerTragt) {
       textSize(32);
-      text(dist(player.x, player.y, target.x, target.y), (player.x + target.x)/2, (player.y + target.y)/2);
+      text(dist(player.x, player.y, target.x, target.y), (player.x - target.x)/2, (player.y + target.y)/2);
     }
   }
 }
