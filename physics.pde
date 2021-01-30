@@ -5,57 +5,37 @@
  */
 
 public class Physics {
+  private PVector square;
 
-  // PVectors
-  PVector acceleration;
-  PVector dragVector;
-  PVector Fnet;
-  PVector force;
-  // numbers
-  float mass;
-  float xForce;
-  float yForce;
-  // constructor 
   public Physics() {
     //instantiating
-    force = new PVector (0, 0);
-    acceleration = new PVector (0, 0);
-    dragVector = new PVector (0, 0);
-    Fnet = new PVector (0, 0);
+    square = new PVector(0, 0);
   }
-  
-  
-  /*
-    this method will set the force, by inputing a float for the amount of the force and an int angle in degrees.
-  */
-  public void setForce(float forceMagnitude, float angle) {
-    xForce = forceMagnitude * cos(angle);
-    yForce = forceMagnitude * -sin(angle);
-    force.set(xForce, yForce);
-  } 
 
-  /*
-  to use this method you want to call it and feed PVector velocity, PVector force, int dragCoefficient, float mass
-   the method will return acceleration and you add the it to your velocity
-   */
-  public PVector getAcceleration(PVector velocity, float dragCoefficient, float mass) {
 
-    // creating the drag vector
-    dragVector.set(velocity);
-    dragVector.normalize();
-    dragVector.mult(-1);
-    dragVector.mult(dragCoefficient);
-    //println(dragVector);
-    //dragVector.set(new PVector(2,2));
-
-    // Fnet = sum of all Force Vectors
-    Fnet.set(force);
-    
-    
-    Fnet.add(dragVector);
-    // acceleration = Fnet / mass of object
-    acceleration.set(Fnet.x/mass,Fnet.y/mass);
-
-    return acceleration;
+  public void showTrig(PVector player, PVector target) {
+    // the square points at the 90 degree point 
+    square(player.x, target.y, 55);
+    // line from the player to the target
+    line(player.x, player.y, target.x, target.y);
+    // line from the player square
+    line(player.x, player.y, player.x, target.y);
+    // line from the tragt to the square
+    line(target.x, target.y, player.x, target.y);
+  }
+  public void showDist(boolean squareTragt, boolean squarePlayer, boolean playerTragt, PVector player, PVector target) {
+    square.set(player.x, target.y);
+    if (squareTragt) {
+      textSize(32);
+      text(dist(square.x, square.y, target.x, target.y), (square.x + target.x)/2, (square.y + target.y)/2);
+    }
+    if (squarePlayer) {
+      textSize(32);
+      text(dist(square.x, square.y, player.x, player.y), (square.x + player.x)/2, (square.y + player.y)/2);
+    }
+    if (playerTragt) {
+      textSize(32);
+      text(dist(player.x, player.y, target.x, target.y), (player.x + target.x)/2, (player.y + target.y)/2);
+    }
   }
 }
