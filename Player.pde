@@ -14,7 +14,10 @@ class Player {
   public void display() {
     push();
     fill(0);
-    ellipse(playerPos.x, playerPos.y, r, r);
+    //ellipse(playerPos.x, playerPos.y, r, r);
+    imageMode(CENTER);
+    playerImg.resize(int(r),int(r));
+    image(playerImg, playerPos.x, playerPos.y);
     noFill();
     textAlign(CENTER);
     textSize(40);

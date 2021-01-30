@@ -9,7 +9,12 @@ class Target {
     push();
     fill(0);
     noStroke();
-    ellipse(targetPos.x, targetPos.y, r, r);
+    for(int i = int(r); i > int(r/6); i -= int(2*r/6)) {
+      fill(255,0,0);
+      ellipse(targetPos.x, targetPos.y, i, i);
+      fill(255);
+      ellipse(targetPos.x, targetPos.y, i-(r/6), i-(r/6));
+    }
     textAlign(CENTER);
     textSize(20);
     text("(" + int(targetPos.x) + ", " + int(targetPos.y) + ")", targetPos.x, targetPos.y-30);
