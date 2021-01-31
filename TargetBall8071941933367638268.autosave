@@ -84,7 +84,4 @@ void keyPressed() {
       player.decAngle();
     } 
   }
-  if(key == ' ') {
-    player.running = true;
-  }
 }
