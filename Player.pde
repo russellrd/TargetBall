@@ -5,6 +5,7 @@ class Player {
   private PVector playerAcc;
   private float angle;
   private int round;
+  private int score;
   private boolean running;
 
   public Player(float x, float y) {
@@ -14,6 +15,7 @@ class Player {
     playerAcc = new PVector(0, 0);
     angle = 0;
     round = 1;
+    score = 0;
     running = false;
   } 
 
@@ -76,6 +78,7 @@ class Player {
   }
   
   public void reset(float x, float y) {
+    playerVel.set(0,0);
     running = false;
     playerPos.set(x,y);
     playerAni.set(x,y);

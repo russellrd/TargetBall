@@ -29,8 +29,8 @@ void draw() {
     break;
   case GAME:
     // Game Code
-    if(player.round <= 5) {
-      background(170);
+    background(170);
+    if(player.round < ROUNDS) {
       trig.showTrig(player.playerPos, target.targetPos);
       trig.showDist(true, true, true, player.playerPos, target.targetPos);
       if(player.running) {
@@ -41,8 +41,8 @@ void draw() {
               player.setVel(180-player.getAngle());
             }
           } else {
-            player.playerVel.set(0,0);
             player.round++;
+            player.score++;
             reset();
           }
       }
