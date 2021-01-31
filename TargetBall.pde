@@ -14,7 +14,9 @@ void setup() {
   coords = loadCSV();
   playerImg = loadImage("smile.png");
   highScores = loadHighScores();
-  reset();
+  Data object = coords.get(int(random(coords.size())));
+  player = new Player(object.x1, object.y1);
+  target = new Target(object.x2, object.y2);
   trig = new Trig();
   screen = Stage.GAME;
 }
@@ -97,7 +99,7 @@ void keyPressed() {
 }
 
 void reset() {
-  //Data object = coords.get(int(random(coords.size())));
-  //player.reset(object.x1, object.y1);
-  //target.reset(object.x2, object.y2);
+  Data object = coords.get(int(random(coords.size())));
+  player.reset(object.x1, object.y1);
+  target.reset(object.x2, object.y2);
 }

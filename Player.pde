@@ -76,6 +76,7 @@ class Player {
   }
   
   public void reset(float x, float y) {
+    running = false;
     playerPos.set(x,y);
     playerAni.set(x,y);
   }
