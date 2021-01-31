@@ -33,11 +33,15 @@ void draw() {
     trig.showTrig(player.playerPos, target.targetPos);
     trig.showDist(true, true, true, player.playerPos, target.targetPos);
     if(player.running) {
-      if(target.getDist(player.playerAni.x, player.playerAni.y) > r) {
-        player.setVel(player.getAngle());
-      } else {
-        player.playerVel.set(0,0);
-      }
+        if(target.getDist(player.playerAni.x, player.playerAni.y) > r) {
+          if(player.playerPos.x < target.targetPos.x) {
+            player.setVel(player.getAngle());
+          } else {
+            player.setVel(180-player.getAngle());
+          }
+        } else {
+          player.playerVel.set(0,0);
+        }
     }
     target.display();
     player.update();

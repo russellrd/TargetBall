@@ -14,6 +14,9 @@ public class Trig {
 
 
   public void showTrig(PVector player, PVector target) {
+    push();
+    noFill();
+    strokeWeight(3);
     // the square points at the 90 degree point 
     int squareSize = 25;
     if (player.x<target.x && player.y>target.y){
@@ -35,8 +38,10 @@ public class Trig {
     line(player.x, player.y, player.x, target.y);
     // line from the tragt to the square
     line(target.x, target.y, player.x, target.y);
+    pop();
   }
   public void showDist(boolean squareTragt, boolean squarePlayer, boolean playerTragt, PVector player, PVector target) {
+    push();
     square.set(player.x, target.y);
     if (squareTragt) {
       textSize(22);
@@ -50,5 +55,6 @@ public class Trig {
       textSize(22);
       text(dist(player.x, player.y, target.x, target.y), (player.x + target.x)/2, (player.y + target.y)/2);
     }
+    pop();
   }
 }
