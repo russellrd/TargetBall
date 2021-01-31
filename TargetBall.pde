@@ -48,6 +48,13 @@ void draw() {
     player.display();
     // Change to next screen
     //screen = Stage.SCOREBOARD;
+    
+    if (!target.hasPassed (player.playerAni.x, player.playerAni.y)){
+      println("out");
+    }
+    
+    println(player.playerAni.x+" "+ player.playerAni.y);
+    
     break;
   case SCOREBOARD:
     push();
