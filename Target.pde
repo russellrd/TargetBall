@@ -21,6 +21,10 @@ class Target {
     pop();
   }
   
+  public void reset(float x, float y) {
+    targetPos.set(x,y);
+  }
+  
   public int getDist(float x, float y) {
     return int(dist(targetPos.x, targetPos.y, x, y));
   }

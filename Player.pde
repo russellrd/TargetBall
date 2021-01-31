@@ -4,6 +4,7 @@ class Player {
   private PVector playerVel;
   private PVector playerAcc;
   private float angle;
+  private int round;
   private boolean running;
 
   public Player(float x, float y) {
@@ -12,6 +13,7 @@ class Player {
     playerVel = new PVector(0, 0);
     playerAcc = new PVector(0, 0);
     angle = 0;
+    round = 1;
     running = false;
   } 
 
@@ -26,6 +28,7 @@ class Player {
     textAlign(CENTER);
     textSize(40);
     text("θ = " + angle, 100, 50);
+    text("Round: " + round + "/" + ROUNDS, width/2, 50);
     textSize(20);
     text("(" + int(playerPos.x) + ", " + int(playerPos.y) + ")", playerPos.x, playerPos.y-30);
     pop();
@@ -70,6 +73,11 @@ class Player {
     if (angleEnd > angleStart) {
       arc(0, 0, 100, 100, -constrain(angleEnd, -PI/2, PI/2), angleStart);
     }
+  }
+  
+  public void reset(float x, float y) {
+    playerPos.set(x,y);
+    playerAni.set(x,y);
   }
 
   public float calcAngle(PVector v1, PVector v2) {

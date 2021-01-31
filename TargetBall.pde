@@ -5,18 +5,16 @@ Target target;
 Player player;
 Stage screen;
 Trig trig;
-int round = 1;
 
 final float r = 20;
+final int ROUNDS = 5;
 
 void setup() {
   size(1600, 600);
   coords = loadCSV();
   playerImg = loadImage("smile.png");
   highScores = loadHighScores();
-  Data object = coords.get(int(random(coords.size())));
-  player = new Player(object.x1, object.y1);
-  target = new Target(object.x2, object.y2);
+  reset();
   trig = new Trig();
   screen = Stage.GAME;
 }
@@ -29,25 +27,30 @@ void draw() {
     break;
   case GAME:
     // Game Code
-    background(170);
-    trig.showTrig(player.playerPos, target.targetPos);
-    trig.showDist(true, true, true, player.playerPos, target.targetPos);
-    if(player.running) {
-        if(target.getDist(player.playerAni.x, player.playerAni.y) > r) {
-          if(player.playerPos.x < target.targetPos.x) {
-            player.setVel(player.getAngle());
+    if(player.round <= 5) {
+      background(170);
+      trig.showTrig(player.playerPos, target.targetPos);
+      trig.showDist(true, true, true, player.playerPos, target.targetPos);
+      if(player.running) {
+          if(target.getDist(player.playerAni.x, player.playerAni.y) > r) {
+            if(player.playerPos.x < target.targetPos.x) {
+              player.setVel(player.getAngle());
+            } else {
+              player.setVel(180-player.getAngle());
+            }
           } else {
-            player.setVel(180-player.getAngle());
+            player.playerVel.set(0,0);
+            player.round++;
+            reset();
           }
-        } else {
-          player.playerVel.set(0,0);
-        }
-    }
-    target.display();
-    player.update();
-    player.display();
+      }
+      target.display();
+      player.update();
+      player.display();
     // Change to next screen
-    //screen = Stage.SCOREBOARD;
+    } else {
+      screen = Stage.SCOREBOARD;
+    }
     break;
   case SCOREBOARD:
     push();
@@ -91,4 +94,10 @@ void keyPressed() {
   if(key == ' ') {
     player.running = true;
   }
+}
+
+void reset() {
+  //Data object = coords.get(int(random(coords.size())));
+  //player.reset(object.x1, object.y1);
+  //target.reset(object.x2, object.y2);
 }
