@@ -1,4 +1,4 @@
-class Ball {
+ class Ball {
 
   private PVector acceleration = new PVector(0, 0);
   private PVector position = new PVector(0, 0);
