@@ -1,7 +1,7 @@
 /*
  * Trig Class
  *     
- * new(28th)
+ * new(31st)
  */
 
 public class Trig {
