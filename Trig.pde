@@ -51,7 +51,7 @@ public class Trig {
     }
     if (playerTragt) {
       textSize(32);
-      text(dist(player.x, player.y, target.x, target.y), (player.x - target.x)/2, (player.y + target.y)/2);
+      text(dist(player.x, player.y, target.x, target.y), (player.x + target.x)/2, (player.y + target.y)/2);
     }
   }
 }

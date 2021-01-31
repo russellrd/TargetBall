@@ -10,7 +10,6 @@ class Ball {
     this.velocity = v;
   }
 
-
   public void update() {
   }
 

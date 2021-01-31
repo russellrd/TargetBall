@@ -34,7 +34,7 @@ void draw() {
     trig.showDist(true, true, true, player.playerPos, target.targetPos);
     player.update();
     if(player.running) {
-      if(target.getDist(player.playerAni.x, player.playerAni.y) > 20) {
+      if(target.getDist(player.playerAni.x, player.playerAni.y) > r) {
         player.setVel(player.getAngle());
       } else {
         player.playerVel.set(0,0);
