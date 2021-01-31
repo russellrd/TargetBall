@@ -32,15 +32,15 @@ void draw() {
     background(170);
     trig.showTrig(player.playerPos, target.targetPos);
     trig.showDist(true, true, true, player.playerPos, target.targetPos);
-    if(player.running) {
+    player.update();
+    //if(player.running) {
       if(target.getDist(player.playerAni.x, player.playerAni.y) > r) {
         player.setVel(player.getAngle());
       } else {
         player.playerVel.set(0,0);
       }
-    }
+    //}
     target.display();
-    player.update();
     player.display();
     // Change to next screen
     //screen = Stage.SCOREBOARD;
@@ -77,14 +77,11 @@ void draw() {
 }
 
 void keyPressed() {
-  if (key == CODED && !player.running) {
+  if (key == CODED) {
     if (keyCode == UP) {
       player.incAngle();
     } else if (keyCode == DOWN) {
       player.decAngle();
-    }
-  }
-  if(key == ' ') {
-      player.running = true;
+    } 
   }
 }
