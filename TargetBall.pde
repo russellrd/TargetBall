@@ -5,7 +5,6 @@ Target target;
 Player player;
 Stage screen;
 Trig trig;
-int round = 1;
 
 final float r = 20;
 final int ROUNDS = 5;
