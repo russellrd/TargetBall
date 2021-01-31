@@ -5,6 +5,7 @@ Target target;
 Player player;
 Stage screen;
 Trig trig;
+int round = 1;
 
 final float r = 20;
 final int ROUNDS = 5;
@@ -46,13 +47,19 @@ void draw() {
             reset();
           }
       }
-      target.display();
-      player.update();
-      player.display();
-    // Change to next screen
-    } else {
-      screen = Stage.SCOREBOARD;
     }
+    target.display();
+    player.update();
+    player.display();
+    // Change to next screen
+    //screen = Stage.SCOREBOARD;
+    
+    if (!target.hasPassed (player.playerAni.x, player.playerAni.y)){
+      println("out");
+    }
+    
+    println(player.playerAni.x+" "+ player.playerAni.y);
+    
     break;
   case SCOREBOARD:
     push();
@@ -99,6 +106,7 @@ void keyPressed() {
 }
 
 void reset() {
+  player.playerVel.set(0,0);
   Data object = coords.get(int(random(coords.size())));
   player.reset(object.x1, object.y1);
   target.reset(object.x2, object.y2);

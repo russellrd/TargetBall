@@ -29,9 +29,12 @@ class Target {
     return int(dist(targetPos.x, targetPos.y, x, y));
   }
 
-  public boolean hasPassed (float x, float y) { 
-    if (x > 0 && x<1600 || y>0 && y<600){
-      return true; // the object is out of the screen
+  public boolean hasPassed (float xpos, float ypos) { 
+    if (xpos > width ) {
+      return true;
+    }
+    if (ypos > height) {
+      return true;
     }
     return false;
   }
