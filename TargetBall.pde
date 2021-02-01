@@ -91,7 +91,6 @@ void draw() {
     // Game Code
     if(epilepsy == 1){
       background(170);
-      nm.stop();
     }
     if(epilepsy == -1){
       background(random(255),random(255),random(255));
@@ -187,7 +186,10 @@ void keyPressed() {
     player.running = true;
   }
   if(key == 'H' || key == 'h'){
-    nm.loop();
+    if(epilepsy == 1)
+      nm.loop();
+    else
+      nm.stop();
     epilepsy *= -1;
   }
 }
