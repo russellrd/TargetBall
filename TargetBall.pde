@@ -9,7 +9,7 @@ Stage screen;
 Trig trig;
 
 final float r = 20;
-final int ROUNDS = 5;
+final int ROUNDS = 2;
 
 void setup() {
   size(1600, 600);
@@ -50,6 +50,7 @@ void draw() {
       }
     } else {
       addScore(player.score);
+      saveHighScores(highScores);
       screen = Stage.SCOREBOARD;
     }
     target.display();
@@ -121,7 +122,6 @@ void addScore(int score) {
     high.add(highScores[i]);
   }
   high.add(score);
-  println(high);
   Collections.sort(high);
   Collections.reverse(high);
   high.remove(high.size()-1);
