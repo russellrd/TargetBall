@@ -31,6 +31,7 @@ class Player {
     textSize(40);
     text("θ = " + angle, 100, 50);
     text("Round: " + round + "/" + ROUNDS, width/2, 50);
+    drawArc();
     textSize(20);
     text("(" + int(playerPos.x) + ", " + int(playerPos.y) + ")", playerPos.x, playerPos.y-30);
     pop();
@@ -69,8 +70,8 @@ class Player {
   }
 
   private void drawArc() {
-    float angleStart = calcAngle(new PVector(1, 0), new PVector(200, 0));
-    float angleEnd = calcAngle(new PVector(1, 0), new PVector(mouseX-playerPos.x, mouseY-playerPos.y));
+    float angleStart = calcAngle(new PVector(playerPos.x, 0), new PVector(200, 0));
+    float angleEnd = calcAngle(new PVector(playerPos.x, 0), new PVector(mouseX-playerPos.x, mouseY-playerPos.y));
     arc(0, 0, 100, 100, angleStart, -constrain(angleEnd, -PI/2, PI/2));
     if (angleEnd > angleStart) {
       arc(0, 0, 100, 100, -constrain(angleEnd, -PI/2, PI/2), angleStart);

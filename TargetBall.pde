@@ -1,3 +1,5 @@
+import java.util.Collections;
+
 ArrayList<Data> coords;
 int[] highScores;
 PImage playerImg;
@@ -7,7 +9,7 @@ Stage screen;
 Trig trig;
 
 final float r = 20;
-final int ROUNDS = 5;
+final int ROUNDS = 2;
 
 void setup() {
   size(1600, 600);
@@ -46,18 +48,21 @@ void draw() {
             reset();
           }
       }
+    } else {
+      addScore(player.score);
+      saveHighScores(highScores);
+      screen = Stage.SCOREBOARD;
     }
     target.display();
     player.update();
     player.display();
     // Change to next screen
-    //screen = Stage.SCOREBOARD;
     
     if (!target.hasPassed (player.playerAni.x, player.playerAni.y)){
-      println("out");
+      //println("out");
     }
     
-    println(player.playerAni.x+" "+ player.playerAni.y);
+    //println(player.playerAni.x+" "+ player.playerAni.y);
     
     break;
   case SCOREBOARD:
@@ -109,4 +114,18 @@ void reset() {
   Data object = coords.get(int(random(coords.size())));
   player.reset(object.x1, object.y1);
   target.reset(object.x2, object.y2);
+}
+
+void addScore(int score) {
+  ArrayList<Integer> high = new ArrayList<Integer>();
+  for(int i = 0; i < highScores.length; i++) {
+    high.add(highScores[i]);
+  }
+  high.add(score);
+  Collections.sort(high);
+  Collections.reverse(high);
+  high.remove(high.size()-1);
+  for(int i = 0; i < high.size(); i++) {
+    highScores[i] = high.get(i);
+  }
 }
