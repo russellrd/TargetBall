@@ -33,7 +33,7 @@ void setup() {
   Window = loadImage("Window.jpg");
   Brick = loadImage("GreyBrick (1).jpg");
   screen = Stage.TITLE;
-  getTrack();
+  //getTrack();
 }
 
 void draw() {
@@ -84,6 +84,7 @@ void draw() {
   case GAME:
     // Game Code
     background(170);
+    file.play();
     if(player.round <= ROUNDS) {
       trig.showTrig(player.playerPos, target.targetPos);
       trig.showDist(true, true, true, player.playerPos, target.targetPos);
