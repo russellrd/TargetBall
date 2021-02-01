@@ -14,6 +14,7 @@ Target target;
 Player player;
 Stage screen;
 Trig trig;
+int epilepsy = 1;
 
 final float r = 20;
 final int ROUNDS = 5;
@@ -85,7 +86,12 @@ void draw() {
     break;
   case GAME:
     // Game Code
-    background(170);
+    if(epilepsy == 1){
+      background(170);
+    }
+    if(epilepsy == -1){
+    background(random(255),random(255),random(255));
+    }
     file.stop();
     if (player.round <= ROUNDS) {
       trig.showTrig(player.playerPos, target.targetPos);
@@ -175,6 +181,9 @@ void keyPressed() {
   }
   if (key == ' ') {
     player.running = true;
+  }
+  if(key == 'H' || key == 'h'){
+    epilepsy *= -1;
   }
 }
 

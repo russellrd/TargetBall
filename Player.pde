@@ -33,6 +33,7 @@ class Player {
     text("Round: " + round + "/" + ROUNDS, width/2, 50);
     textSize(20);
     text("(" + int(playerPos.x) + ", " + int(playerPos.y) + ")", playerPos.x, playerPos.y-30);
+    text("Press H to toggle hard mode", 800, height - 50);
     pop();
   }
 
