@@ -1,11 +1,11 @@
 # TargetBall
 
-TargetBall is a math based top down curling simulator.
+TargetBall is a trigonometry based educational game.
 
 ## Controls
 
-1. use the arrow keys up/down to change angle of the shot.
-2. click the space bar to shoot the ball
+1. Use the arrow keys up/down to change angle of the shot.
+2. Press the space bar to shoot the ball
 
 ## Goal
 
