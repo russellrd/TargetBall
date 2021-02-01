@@ -59,9 +59,7 @@ void draw() {
 
     noStroke();
     fill(255, 50, 50);  
-    // ellipse(position.x, position.y - 10, 75, 75);     // draw ball
-    playerImg.resize(75, 75);
-    image(playerImg, position.x, position.y);
+    ellipse(position.x, position.y - 10, 75, 75);     // draw ball
     updatePos();
     moveText();
 

@@ -52,15 +52,25 @@ public void updatePos() {
 public void moveText() {
 
   textSize(100);
+  fill(255, 0, 0);
   text("T", letterPosX[0], letterPosY[0]);
+  fill(255, 165, 0);
   text("A", letterPosX[1], letterPosY[1]);
+  fill(255, 255, 0);
   text("R", letterPosX[2], letterPosY[2]);
+  fill(0, 128, 0);
   text("G", letterPosX[3], letterPosY[3]);
+  fill(0, 0, 255);
   text("E", letterPosX[4], letterPosY[4]);
+  fill(128, 0, 255);
   text("T", letterPosX[5], letterPosY[5]);
+  fill(255, 0, 0);
   text("B", letterPosX[6], letterPosY[6]);
+  fill(255, 165, 0);
   text("A", letterPosX[7], letterPosY[7]);
+  fill(255, 255, 0);
   text("L", letterPosX[8], letterPosY[8]);
+  fill(0, 128, 0);
   text("L", letterPosX[9], letterPosY[9]);
 
   if (letterPosY[0] < 400) {
