@@ -20,29 +20,32 @@ public class Trig {
     // the square points at the 90 degree point 
     int squareSize = 25;
     if (player.x<target.x && player.y>target.y){
-      square(player.x , target.y, squareSize);
+      
+      square(target.x-squareSize, player.y-squareSize, squareSize);
     }
     if (player.x>target.x && player.y<target.y){
-      square(player.x-squareSize, target.y-squareSize, squareSize);
+      square(target.x , player.y, squareSize);
     }
     if (player.x<target.x && player.y<target.y){
-      square(player.x, target.y-squareSize, squareSize);
+      
+      square(target.x-squareSize, player.y, squareSize);
     }
     if (player.x>target.x && player.y>target.y){
-      square(player.x-squareSize, target.y, squareSize);
+      square(target.x, player.y-squareSize, squareSize);
+      
     }
     //square(player.x, target.y, 55);
     // line from the player to the target
     line(player.x, player.y, target.x, target.y);
     // line from the player square
-    line(player.x, player.y, player.x, target.y);
+    line(player.x, player.y, target.x, player.y);
     // line from the tragt to the square
-    line(target.x, target.y, player.x, target.y);
+    line(target.x, target.y,  target.x, player.y);
     pop();
   }
   public void showDist(boolean squareTragt, boolean squarePlayer, boolean playerTragt, PVector player, PVector target) {
     push();
-    square.set(player.x, target.y);
+    square.set(target.x, player.y);
     if (squareTragt) {
       textSize(22);
       text(dist(square.x, square.y, target.x, target.y), (square.x + target.x)/2, (square.y + target.y)/2);

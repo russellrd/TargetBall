@@ -1,16 +1,15 @@
 # TargetBall
 
-TargetBall is a physics based top down curling simulator.
+TargetBall is a math based top down curling simulator.
 
 ## Controls
 
-1. Move mouse up/down to change angle of force.
-2. Move mouse left/right to change the magnitude of force.
-3. Click to apply force.
+1. use the arrow keys up/down to change angle of the shot.
+2. click the space bar to shoot the ball
 
 ## Goal
 
-Apply a force on the player that will push the ball as close to the center of the target as possible.
+The player needs to figure out the best angle to push the ball to reach the target based on their trigonometry knowledge.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
