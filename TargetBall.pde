@@ -1,5 +1,12 @@
 import java.util.Collections;
+import processing.sound.*;
+SoundFile file;
 
+PImage Floor;
+PImage Log;
+PImage Wall;
+PImage Window;
+PImage Brick;
 ArrayList<Data> coords;
 int[] highScores;
 PImage playerImg;
@@ -20,14 +27,59 @@ void setup() {
   player = new Player(object.x1, object.y1);
   target = new Target(object.x2, object.y2);
   trig = new Trig();
+  Floor = loadImage("floor.jpg");
+  Log = loadImage("goodlog.jpg");
+  Wall = loadImage("WALL (1).jpg");
+  Window = loadImage("Window.jpg");
+  Brick = loadImage("GreyBrick (1).jpg");
   screen = Stage.GAME;
 }
 
 void draw() {
   switch(screen) {
   case TITLE:
-    // Change to next screen
-    screen = Stage.GAME;
+    push();
+    //getTrack();            // music doesnt play correctly 
+
+    background(0);
+    
+    if (keyCode == ENTER) {    // if enter is pressed game starts 
+      screen = Stage.GAME;
+    }
+
+    wall();
+    bricks();
+    logs();              // made to look like a tavern 
+    windows();
+    floors();
+   
+    rectMode(CENTER);
+    noStroke();
+    fill(0, 150, 0);
+
+    noStroke();
+    fill(255, 50, 50);  
+    ellipse(position.x, position.y - 10, 75, 75);     // draw ball
+    updatePos();
+    moveText();
+
+    stroke(000000);
+    fill(000000);
+    rect(1400, 200, 300, 100);    //start button 
+
+    //rect(1400, 400, 300, 100);    //instructions button
+
+    fill(255);
+    rect(1400, 200, 275, 75);  // inside of the start button 
+
+    //rect(1400, 400, 275, 75);    // inside of the instructions buttton
+   
+    fill(000000);
+    textSize(18);
+    text("Press Enter To Play", 1300, 200);
+    
+    //text("Press C For The Controls", 1300, 400);
+    pop();
     break;
   case GAME:
     // Game Code
