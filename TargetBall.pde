@@ -1,5 +1,3 @@
-import java.util.Arrays;
-import java.util.List;
 import java.util.Collections;
 
 ArrayList<Data> coords;
@@ -60,7 +58,7 @@ void draw() {
     // Change to next screen
     
     if (!target.hasPassed (player.playerAni.x, player.playerAni.y)){
-      println("out");
+      //println("out");
     }
     
     //println(player.playerAni.x+" "+ player.playerAni.y);
