@@ -31,7 +31,6 @@ class Player {
     textSize(40);
     text("θ = " + angle, 100, 50);
     text("Round: " + round + "/" + ROUNDS, width/2, 50);
-    drawArc();
     textSize(20);
     text("(" + int(playerPos.x) + ", " + int(playerPos.y) + ")", playerPos.x, playerPos.y-30);
     pop();

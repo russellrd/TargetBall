@@ -9,7 +9,7 @@ Stage screen;
 Trig trig;
 
 final float r = 20;
-final int ROUNDS = 2;
+final int ROUNDS = 5;
 
 void setup() {
   size(1600, 600);
