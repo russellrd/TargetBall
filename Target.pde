@@ -17,6 +17,7 @@ class Target {
     }
     textAlign(CENTER);
     textSize(20);
+    fill(0);
     text("(" + int(targetPos.x) + ", " + int(targetPos.y) + ")", targetPos.x, targetPos.y-30);
     pop();
   }
