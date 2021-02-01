@@ -97,7 +97,7 @@ void draw() {
 }
 
 void keyPressed() {
-  if (key == CODED) {
+  if (key == CODED && !player.running) {
     if (keyCode == UP) {
       player.incAngle();
     } else if (keyCode == DOWN) {
