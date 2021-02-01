@@ -6,6 +6,9 @@
 
 public class Trig {
   private PVector square;
+  float opp;
+  float adj;
+  float hyp;
 
   public Trig() {
     //instantiating
@@ -63,4 +66,16 @@ public class Trig {
     }
     pop();
   }
+  public void getAns(){
+    
+    opp = dist(trig.square.x, trig.square.y, target.targetPos.x, target.targetPos.y);
+    adj = dist(trig.square.x, trig.square.y, player.playerPos.x, player.playerPos.y);
+    hyp = dist(player.playerPos.x, player.playerPos.y, target.targetPos.x, target.targetPos.y);
+    
+    float invSinA = asin(opp/hyp);
+    
+    text("Oh no! You were incorrect! The correct answer was " + degrees(invSinA) + "!", 400, 400);
+    
+  }
+  
 }

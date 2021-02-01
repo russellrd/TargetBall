@@ -7,6 +7,7 @@ Target target;
 Player player;
 Stage screen;
 Trig trig;
+boolean next;
 
 final float r = 20;
 final int ROUNDS = 2;
@@ -32,21 +33,21 @@ void draw() {
   case GAME:
     // Game Code
     background(170);
-    if(player.round < ROUNDS) {
+    if (player.round < ROUNDS) {
       trig.showTrig(player.playerPos, target.targetPos);
       trig.showDist(true, true, true, player.playerPos, target.targetPos);
-      if(player.running) {
-          if(target.getDist(player.playerAni.x, player.playerAni.y) > r) {
-            if(player.playerPos.x < target.targetPos.x) {
-              player.setVel(player.getAngle());
-            } else {
-              player.setVel(180-player.getAngle());
-            }
+      if (player.running) {
+        if (target.getDist(player.playerAni.x, player.playerAni.y) > r) {
+          if (player.playerPos.x < target.targetPos.x) {
+            player.setVel(player.getAngle());
           } else {
-            player.round++;
-            player.score++;
-            reset();
+            player.setVel(180-player.getAngle());
           }
+        } else {
+          player.round++;
+          player.score++;
+          reset();
+        }
       }
     } else {
       addScore(player.score);
@@ -56,14 +57,29 @@ void draw() {
     target.display();
     player.update();
     player.display();
+    next = false;
     // Change to next screen
-    
-    if (!target.hasPassed (player.playerAni.x, player.playerAni.y)){
-      //println("out");
+
+    if (target.hasPassed(player.playerAni.x, player.playerAni.y)) {
+      screen = Stage.ANSWER;
     }
-    
+
     //println(player.playerAni.x+" "+ player.playerAni.y);
-    
+
+    break;
+  case ANSWER:
+  push();
+  background(255, 0, 0);
+  trig.getAns();
+
+  if(keyPressed && key == ENTER){
+    screen = Stage.GAME;
+    player.round++;
+    player.score++;
+    reset();
+  }
+  pop();
+
     break;
   case SCOREBOARD:
     push();
@@ -102,15 +118,15 @@ void keyPressed() {
       player.incAngle();
     } else if (keyCode == DOWN) {
       player.decAngle();
-    } 
+    }
   }
-  if(key == ' ') {
+  if (key == ' ') {
     player.running = true;
   }
 }
 
 void reset() {
-  player.playerVel.set(0,0);
+  player.playerVel.set(0, 0);
   Data object = coords.get(int(random(coords.size())));
   player.reset(object.x1, object.y1);
   target.reset(object.x2, object.y2);
@@ -118,14 +134,14 @@ void reset() {
 
 void addScore(int score) {
   ArrayList<Integer> high = new ArrayList<Integer>();
-  for(int i = 0; i < highScores.length; i++) {
+  for (int i = 0; i < highScores.length; i++) {
     high.add(highScores[i]);
   }
   high.add(score);
   Collections.sort(high);
   Collections.reverse(high);
   high.remove(high.size()-1);
-  for(int i = 0; i < high.size(); i++) {
+  for (int i = 0; i < high.size(); i++) {
     highScores[i] = high.get(i);
   }
 }
