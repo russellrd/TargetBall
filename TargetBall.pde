@@ -1,6 +1,7 @@
 import java.util.Collections;
 import processing.sound.*;
 SoundFile file;
+SoundFile nm;
 
 PImage Floor;
 PImage Log;
@@ -28,6 +29,8 @@ void setup() {
   player = new Player(object.x1, object.y1);
   target = new Target(object.x2, object.y2);
   trig = new Trig();
+  nm = new SoundFile(this, "nicemusic.mp3");
+  nm.amp(0.1);
   Floor = loadImage("floor.jpg");
   Log = loadImage("goodlog.jpg");
   Wall = loadImage("WALL (1).jpg");
@@ -88,9 +91,10 @@ void draw() {
     // Game Code
     if(epilepsy == 1){
       background(170);
+      nm.stop();
     }
     if(epilepsy == -1){
-    background(random(255),random(255),random(255));
+      background(random(255),random(255),random(255));
     }
     file.stop();
     if (player.round <= ROUNDS) {
@@ -183,6 +187,7 @@ void keyPressed() {
     player.running = true;
   }
   if(key == 'H' || key == 'h'){
+    nm.loop();
     epilepsy *= -1;
   }
 }
