@@ -55,7 +55,7 @@ class Player {
   }
   
   public void setVel(float angle) {
-    player.playerVel.set(2 * cos(radians(angle)), 2 * -sin(radians(angle)));
+    player.playerVel.set(3 * cos(radians(angle)), 3 * -sin(radians(angle)));
   } 
 
   private void arrow(int x1, int y1, int x2, int y2) {
@@ -79,6 +79,7 @@ class Player {
   
   public void reset(float x, float y) {
     playerVel.set(0,0);
+    angle = 0;
     running = false;
     playerPos.set(x,y);
     playerAni.set(x,y);

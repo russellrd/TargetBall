@@ -32,7 +32,7 @@ void draw() {
   case GAME:
     // Game Code
     background(170);
-    if(player.round < ROUNDS) {
+    if(player.round <= ROUNDS) {
       trig.showTrig(player.playerPos, target.targetPos);
       trig.showDist(true, true, true, player.playerPos, target.targetPos);
       if(player.running) {
