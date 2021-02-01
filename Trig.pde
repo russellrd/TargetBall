@@ -48,13 +48,16 @@ public class Trig {
     square.set(target.x, player.y);
     if (squareTragt) {
       textSize(22);
+      //opp
       text(dist(square.x, square.y, target.x, target.y), (square.x + target.x)/2, (square.y + target.y)/2);
     }
     if (squarePlayer) {
       textSize(22);
+      //aj
       text(dist(square.x, square.y, player.x, player.y), (square.x + player.x)/2, (square.y + player.y)/2);
     }
     if (playerTragt) {
+      //hyp
       textSize(22);
       text(dist(player.x, player.y, target.x, target.y), (player.x + target.x)/2, (player.y + target.y)/2);
     }
