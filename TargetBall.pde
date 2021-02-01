@@ -108,7 +108,10 @@ void draw() {
           }
         } else {
           player.round++;
-          player.score++;
+          if(epilepsy == 1)
+            player.score++;
+          else
+            player.score+=2;
           reset();
         }
       }

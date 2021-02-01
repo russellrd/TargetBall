@@ -31,6 +31,7 @@ class Player {
     textSize(40);
     text("θ = " + angle, 100, 50);
     text("Round: " + round + "/" + ROUNDS, width/2, 50);
+    text("Points: " + player.score, width - 100, height - (height-50));
     textSize(20);
     text("(" + int(playerPos.x) + ", " + int(playerPos.y) + ")", playerPos.x, playerPos.y-30);
     text("Press H to toggle hard mode", 800, height - 50);
