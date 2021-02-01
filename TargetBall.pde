@@ -84,7 +84,6 @@ void draw() {
   case GAME:
     // Game Code
     background(170);
-<<<<<<< HEAD
     file.stop();
     if (player.round <= ROUNDS) {
       trig.showTrig(player.playerPos, target.targetPos);
