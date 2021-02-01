@@ -32,14 +32,14 @@ void setup() {
   Wall = loadImage("WALL (1).jpg");
   Window = loadImage("Window.jpg");
   Brick = loadImage("GreyBrick (1).jpg");
-  screen = Stage.GAME;
+  screen = Stage.TITLE;
+  getTrack();
 }
 
 void draw() {
   switch(screen) {
   case TITLE:
     push();
-    //getTrack();            // music doesnt play correctly 
 
     background(0);
     

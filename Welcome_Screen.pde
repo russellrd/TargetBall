@@ -125,6 +125,7 @@ public void moveText() {
 }
 
 void getTrack() {
-  file = new SoundFile(this, "Main-Song.mp3");     // tavern music   
+  file = new SoundFile(this, "Main-Song.mp3");     // tavern music
+  file.amp(0.2);
   file.loop();
 }
