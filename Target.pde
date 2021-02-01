@@ -32,8 +32,11 @@ class Target {
   public boolean hasPassed (float xpos, float ypos) { 
     if (xpos > width ) {
       return true;
-    }
-    if (ypos > height) {
+    }else if(xpos < 0){
+      return true;
+    }else if(ypos > height){
+      return true;
+    }else if(ypos < 0){
       return true;
     }
     return false;

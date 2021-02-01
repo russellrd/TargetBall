@@ -6,6 +6,9 @@
 
 public class Trig {
   private PVector square;
+  float opp;
+  float adj;
+  float hyp;
 
   public Trig() {
     //instantiating
@@ -59,5 +62,15 @@ public class Trig {
       text(dist(player.x, player.y, target.x, target.y), (player.x + target.x)/2, (player.y + target.y)/2);
     }
     pop();
+  }
+  public void getAns(){
+    opp = dist(trig.square.x, trig.square.y, target.targetPos.x, target.targetPos.y);
+    adj = dist(trig.square.x, trig.square.y, player.playerPos.x, player.playerPos.y);
+    hyp = dist(player.playerPos.x, player.playerPos.y, target.targetPos.x, target.targetPos.y);
+    
+    float ans = asin(opp/hyp);
+    fill(255);
+    stroke(50);
+    text(degrees(ans), 400, 400);
   }
 }
