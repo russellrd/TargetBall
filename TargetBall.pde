@@ -11,6 +11,7 @@ PImage Window;
 PImage Brick;
 ArrayList<Data> coords;
 int[] highScores;
+boolean[] Barr;
 PImage playerImg;
 Target target;
 Player player;
@@ -36,6 +37,8 @@ void setup() {
   player = new Player(object.x1, object.y1);
   target = new Target(object.x2, object.y2);
   trig = new Trig();
+  bar = new boolean[3];
+  getRandom();
   
   // Load all images and sounds
   nm = new SoundFile(this, "nicemusic.mp3");
@@ -97,7 +100,7 @@ void draw() {
       file.stop();
       if (player.round <= ROUNDS) {
         trig.showTrig(player.playerPos, target.targetPos);
-        trig.showDist(true, true, true, player.playerPos, target.targetPos);
+        trig.showDist(Barr[0], Bar[1], Barr[2], player.playerPos, target.targetPos);
         if (player.running) {
           if (target.getDist(player.playerAni.x, player.playerAni.y) > r) {
             if (player.playerPos.x < target.targetPos.x) {
@@ -198,6 +201,7 @@ void keyPressed() {
 // Reset all objects
 void reset() {
   player.playerVel.set(0, 0);
+  getRandom();
   Data object = coords.get(int(random(coords.size())));
   player.reset(object.x1, object.y1);
   target.reset(object.x2, object.y2);
@@ -215,5 +219,24 @@ void addScore(int score) {
   high.remove(high.size()-1);
   for (int i = 0; i < high.size(); i++) {
     highScores[i] = high.get(i);
+  }
+}
+
+// Get random 2 sides of triangle
+void getRandom() {
+  float r = random(0, 4);
+  println(r);
+  if (r>0 && r<1) {
+    Barr[0] = true;
+    Barr[1] = true;
+    Barr[2] = false;
+  } else if (r>1 && r<2) {
+    Barr[0] = true;
+    Barr[1] = false;
+    Barr[2] = true;
+  } else if (r>2 && r<4) {
+    Barr[0] = false;
+    Barr[1] = true;
+    Barr[2] = true;
   }
 }
