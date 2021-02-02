@@ -23,17 +23,22 @@ class Player {
     push();
     fill(0);
     //ellipse(playerPos.x, playerPos.y, r, r);
+    noFill();
+    push();
+    translate(playerPos.x, playerPos.y);
+    strokeWeight(3);
+    drawArc();
+    pop();
     imageMode(CENTER);
     playerImg.resize(int(r),int(r));
     image(playerImg, playerAni.x, playerAni.y);
-    noFill();
     textAlign(CENTER);
     textSize(40);
     text("θ = " + angle, 100, 50);
     text("Round: " + round + "/" + ROUNDS, width/2, 50);
     text("Points: " + player.score, width - 100, height - (height-50));
     textSize(20);
-    text("(" + int(playerPos.x) + ", " + int(playerPos.y) + ")", playerPos.x, playerPos.y-30);
+    //text("(" + int(playerPos.x) + ", " + int(playerPos.y) + ")", playerPos.x, playerPos.y-30);
     text("Press H to toggle hard mode", 800, height - 50);
     pop();
   }
@@ -71,11 +76,16 @@ class Player {
   }
 
   private void drawArc() {
-    float angleStart = calcAngle(new PVector(playerPos.x, 0), new PVector(200, 0));
-    float angleEnd = calcAngle(new PVector(playerPos.x, 0), new PVector(mouseX-playerPos.x, mouseY-playerPos.y));
-    arc(0, 0, 100, 100, angleStart, -constrain(angleEnd, -PI/2, PI/2));
-    if (angleEnd > angleStart) {
-      arc(0, 0, 100, 100, -constrain(angleEnd, -PI/2, PI/2), angleStart);
+    float angleStart = calcAngle(new PVector(1, 0), new PVector(abs(target.targetPos.x-playerPos.x), abs(target.targetPos.y-playerPos.y)));
+    float angleEnd = calcAngle(new PVector(1, 0), new PVector(abs(target.targetPos.x-playerPos.x), 0));
+    if(target.targetPos.x-playerPos.x > 0 && target.targetPos.y-playerPos.y < 0) {
+      arc(0, 0, 150, 150, angleStart, angleEnd);
+    } else if(target.targetPos.x-playerPos.x < 0 && target.targetPos.y-playerPos.y > 0) {
+      arc(0, 0, 150, 150, angleStart-PI, angleEnd-PI);
+    } else if(target.targetPos.x-playerPos.x > 0 && target.targetPos.y-playerPos.y > 0) {
+      arc(0, 0, 150, 150, angleEnd, -angleStart);
+    } else {
+      arc(0, 0, 150, 150, angleEnd+PI, -angleStart+PI);
     }
   }
   

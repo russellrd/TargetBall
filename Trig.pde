@@ -23,19 +23,16 @@ public class Trig {
     // the square points at the 90 degree point 
     int squareSize = 25;
     if (player.x<target.x && player.y>target.y){
-      
       square(target.x-squareSize, player.y-squareSize, squareSize);
     }
     if (player.x>target.x && player.y<target.y){
       square(target.x , player.y, squareSize);
     }
     if (player.x<target.x && player.y<target.y){
-      
       square(target.x-squareSize, player.y, squareSize);
     }
     if (player.x>target.x && player.y>target.y){
       square(target.x, player.y-squareSize, squareSize);
-      
     }
     //square(player.x, target.y, 55);
     // line from the player to the target

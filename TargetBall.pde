@@ -44,7 +44,6 @@ void draw() {
   switch(screen) {
   case TITLE:
     push();
-
     background(0);
 
     if (keyCode == ENTER) {    // if enter is pressed game starts 
@@ -123,16 +122,11 @@ void draw() {
     target.display();
     player.update();
     player.display();
-    // Change to next screen
 
     if (target.hasPassed (player.playerAni.x, player.playerAni.y)) {
       screen = Stage.ANSWER;
     }
-
-    //println(player.playerAni.x+" "+ player.playerAni.y);
-
     break;
-
   case ANSWER:
 
     push();

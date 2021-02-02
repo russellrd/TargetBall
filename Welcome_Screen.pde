@@ -34,23 +34,17 @@ public void floors () {
 }
 
 public void updatePos() {
-
-  if (position.y > height-50) {
-    position.y = height-50;
-  }
-
   velocity = velocity.add(acceleration);
   velocity = velocity.mult(airFriction);
   position = position.add(velocity);
 
-  if (position.y > height-50) {
+  if (position.y > height-150) {
     velocity.y *= -1 * friction;
-    position.y = height-50;
+    position.y = height-150;
   }
 }
 
 public void moveText() {
-
   textSize(100);
   fill(255, 0, 0);
   text("T", letterPosX[0], letterPosY[0]);
