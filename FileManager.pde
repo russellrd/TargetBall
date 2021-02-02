@@ -1,4 +1,4 @@
-// Load x and y coordinates of two objects form csv file into a pvector arraylist
+// Load x and y coordinates of two objects form csv file into a Data arraylist
 public ArrayList<Data> loadCSV() {
   Table table = loadTable("targetballdata.csv", "header");
   ArrayList<Data> d = new ArrayList<Data>();

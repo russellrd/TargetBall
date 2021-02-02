@@ -10,12 +10,13 @@ public class Trig {
   float adj;
   float hyp;
 
+  // Constructor for trig
   public Trig() {
     //instantiating
     square = new PVector(0, 0);
   }
 
-
+  // Show triangle from player and target positions
   public void showTrig(PVector player, PVector target) {
     push();
     noFill();
@@ -43,6 +44,8 @@ public class Trig {
     line(target.x, target.y,  target.x, player.y);
     pop();
   }
+  
+  // Show distance between 3 points
   public void showDist(boolean squareTragt, boolean squarePlayer, boolean playerTragt, PVector player, PVector target) {
     push();
     square.set(target.x, player.y);
@@ -60,6 +63,8 @@ public class Trig {
     }
     pop();
   }
+  
+  // Get answer for problem
   public void getAns(){
     opp = dist(trig.square.x, trig.square.y, target.targetPos.x, target.targetPos.y);
     adj = dist(trig.square.x, trig.square.y, player.playerPos.x, player.playerPos.y);

@@ -8,6 +8,7 @@ class Player {
   private int score;
   private boolean running;
 
+  // Player constructor
   public Player(float x, float y) {
     playerPos = new PVector(x, y);
     playerAni = new PVector(x, y);
@@ -19,10 +20,10 @@ class Player {
     running = false;
   } 
 
+  // Display player on screen
   public void display() {
     push();
     fill(0);
-    //ellipse(playerPos.x, playerPos.y, r, r);
     noFill();
     push();
     translate(playerPos.x, playerPos.y);
@@ -38,43 +39,38 @@ class Player {
     text("Round: " + round + "/" + ROUNDS, width/2, 50);
     text("Points: " + player.score, width - 100, height - (height-50));
     textSize(20);
-    //text("(" + int(playerPos.x) + ", " + int(playerPos.y) + ")", playerPos.x, playerPos.y-30);
     text("Press H to toggle hard mode", 800, height - 50);
     pop();
   }
 
+  // Update player position
   public void update() {
     playerAni.add(playerVel);
   }
   
+  // Increase angle by 1
   public void incAngle() {
     if(angle < 90)
       angle++;
   }
   
+  // Decrease angle by 1
   public void decAngle() {
     if(angle > -90)
       angle--;
   }
   
+  // Get angle
   public float getAngle() {
     return angle;
   }
   
+  // Set velocity of player from angle
   public void setVel(float angle) {
     player.playerVel.set(3 * cos(radians(angle)), 3 * -sin(radians(angle)));
-  } 
-
-  private void arrow(int x1, int y1, int x2, int y2) {
-    push();
-    line(x1, y1, x2, y2);
-    translate(x2, y2);
-    rotate(atan2(x1-x2, y2-y1));
-    line(0, 0, -10, -10);
-    line(0, 0, 10, -10);
-    pop();
   }
 
+  // Draw arc between two lines in any quadrant
   private void drawArc() {
     float angleStart = calcAngle(new PVector(1, 0), new PVector(abs(target.targetPos.x-playerPos.x), abs(target.targetPos.y-playerPos.y)));
     float angleEnd = calcAngle(new PVector(1, 0), new PVector(abs(target.targetPos.x-playerPos.x), 0));
@@ -89,6 +85,7 @@ class Player {
     }
   }
   
+  // Reset player
   public void reset(float x, float y) {
     playerVel.set(0,0);
     angle = 0;
@@ -97,6 +94,7 @@ class Player {
     playerAni.set(x,y);
   }
 
+  // Calculate angle between to PVectors
   public float calcAngle(PVector v1, PVector v2) {
     return atan2(v1.y, v1.x)-atan2(v2.y, v2.x);
   }
