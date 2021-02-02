@@ -13,5 +13,12 @@ Press 'h' for hard mode
 
 The player needs to figure out the best angle to push the ball to reach the target based on their trigonometry knowledge.
 
+## Installation
+
+1. Install Processing
+2. Open TargetBall.pde
+3. Import Sound Library (Sketch->Import Library->Add Library and Search For Sound)
+4. Run the project
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
