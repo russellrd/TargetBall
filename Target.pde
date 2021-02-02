@@ -1,10 +1,12 @@
 class Target {
   private PVector targetPos;
 
+  // Constructor for target
   public Target(float x, float y) {
     targetPos = new PVector(x, y);
   }
 
+  // Display target to display
   public void display() {
     push();
     fill(0);
@@ -18,18 +20,20 @@ class Target {
     textAlign(CENTER);
     textSize(20);
     fill(0);
-    text("(" + int(targetPos.x) + ", " + int(targetPos.y) + ")", targetPos.x, targetPos.y-30);
     pop();
   }
   
+  // Reset x and y position to new coords
   public void reset(float x, float y) {
     targetPos.set(x,y);
   }
   
+  // Get distance of position (x,y) to the target
   public int getDist(float x, float y) {
     return int(dist(targetPos.x, targetPos.y, x, y));
   }
 
+  // Check if position (x,y) is outside the screen
   public boolean hasPassed (float xpos, float ypos) { 
     if (xpos > width ) {
       return true;

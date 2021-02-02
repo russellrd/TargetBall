@@ -10,12 +10,13 @@ public class Trig {
   float adj;
   float hyp;
 
+  // Constructor for trig
   public Trig() {
     //instantiating
     square = new PVector(0, 0);
   }
 
-
+  // Show triangle from player and target positions
   public void showTrig(PVector player, PVector target) {
     push();
     noFill();
@@ -23,19 +24,16 @@ public class Trig {
     // the square points at the 90 degree point 
     int squareSize = 25;
     if (player.x<target.x && player.y>target.y){
-      
       square(target.x-squareSize, player.y-squareSize, squareSize);
     }
     if (player.x>target.x && player.y<target.y){
       square(target.x , player.y, squareSize);
     }
     if (player.x<target.x && player.y<target.y){
-      
       square(target.x-squareSize, player.y, squareSize);
     }
     if (player.x>target.x && player.y>target.y){
       square(target.x, player.y-squareSize, squareSize);
-      
     }
     //square(player.x, target.y, 55);
     // line from the player to the target
@@ -46,6 +44,8 @@ public class Trig {
     line(target.x, target.y,  target.x, player.y);
     pop();
   }
+  
+  // Show distance between 3 points
   public void showDist(boolean squareTragt, boolean squarePlayer, boolean playerTragt, PVector player, PVector target) {
     push();
     square.set(target.x, player.y);
@@ -63,6 +63,8 @@ public class Trig {
     }
     pop();
   }
+  
+  // Get answer for problem
   public void getAns(){
     opp = dist(trig.square.x, trig.square.y, target.targetPos.x, target.targetPos.y);
     adj = dist(trig.square.x, trig.square.y, player.playerPos.x, player.playerPos.y);
