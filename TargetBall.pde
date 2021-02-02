@@ -131,7 +131,7 @@ void draw() {
     // Answer Display
     case ANSWER:
       push();
-      background(255, 0, 0);
+      background(125);
       trig.getAns();
       if (keyPressed && key == ENTER) {
         player.round++;
