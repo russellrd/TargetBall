@@ -37,7 +37,7 @@ void setup() {
   player = new Player(object.x1, object.y1);
   target = new Target(object.x2, object.y2);
   trig = new Trig();
-  bar = new boolean[3];
+  Barr = new boolean[3];
   getRandom();
   
   // Load all images and sounds
@@ -51,7 +51,7 @@ void setup() {
   Brick = loadImage("GreyBrick (1).jpg");
   getTrack();
   
-  /// Load title screen
+  // Load title screen
   screen = Stage.TITLE;
 }
 
@@ -100,7 +100,7 @@ void draw() {
       file.stop();
       if (player.round <= ROUNDS) {
         trig.showTrig(player.playerPos, target.targetPos);
-        trig.showDist(Barr[0], Bar[1], Barr[2], player.playerPos, target.targetPos);
+        trig.showDist(Barr[0], Barr[1], Barr[2], player.playerPos, target.targetPos);
         if (player.running) {
           if (target.getDist(player.playerAni.x, player.playerAni.y) > r) {
             if (player.playerPos.x < target.targetPos.x) {
@@ -225,7 +225,6 @@ void addScore(int score) {
 // Get random 2 sides of triangle
 void getRandom() {
   float r = random(0, 4);
-  println(r);
   if (r>0 && r<1) {
     Barr[0] = true;
     Barr[1] = true;
