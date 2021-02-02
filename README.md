@@ -17,7 +17,7 @@ The player needs to figure out the best angle to push the ball to reach the targ
 
 1. Install Processing
 2. Open TargetBall.pde
-3. Import Sound Library (Sketch->Import Library->Add Library and Search For Sound)
+3. Import Sound Library (Sketch->Import Library->Add Library, search for 'Sound' and click 'Install')
 4. Run the project
 
 ## License
