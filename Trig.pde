@@ -76,7 +76,7 @@ public class Trig {
     stroke(50);
     textMode(CENTER);
     textSize(50);
-    text("Oops! That answer was incorect!", width/2-450, height/2-150);
+    text("Oops! That answer was incorrect!", width/2-450, height/2-150);
     text("The correct answer was " + round(degrees(asin)) + " degrees!", width/2-515, height/2-100);
     text("Press ENTER for the next round!", width/2-450, height/2-50);
     textSize(20);

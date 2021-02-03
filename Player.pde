@@ -67,7 +67,7 @@ class Player {
   
   // Set velocity of player from angle
   public void setVel(float angle) {
-    player.playerVel.set(3 * cos(radians(angle)), 3 * -sin(radians(angle)));
+    player.playerVel.set(6 * cos(radians(angle)), 6 * -sin(radians(angle)));
   }
 
   // Draw arc between two lines in any quadrant
